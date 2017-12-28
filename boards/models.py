@@ -10,14 +10,14 @@ class Board(models.Model):
     	return self.Name
 
 class Topic(models.Model):
-    subject = models.CharField(max_length=100)
+    subject = models.CharField(max_length=100, default='sample')
     last_updated = models.DateTimeField(auto_now_add=True)
     board = models.ForeignKey(Board, related_name='Topics')
     starter = models.ForeignKey(User, related_name='Topics') #reverse relationships exist by default, 'Topics' is the name given
 
 class Post(models.Model):
     message = models.TextField(max_length=4000)
-    topic = models.ForeignKey(Topic, related_name='Posts')
+    topic = models.ForeignKey(Topic, related_name='Posts', default='sample')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(null=True, auto_now_add=True)
     created_by = models.ForeignKey(User, related_name='Posts')
