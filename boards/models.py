@@ -16,7 +16,7 @@ class Topic(models.Model):
     starter = models.ForeignKey(User, related_name='Topics') #reverse relationships exist by default, 'Topics' is the name given
 
 class Post(models.Model):
-    message = models.TextField(max_length=4000)
+    message = models.TextField(max_length=4000, default='sample')
     topic = models.ForeignKey(Topic, related_name='Posts', default='sample')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(null=True, auto_now_add=True)
